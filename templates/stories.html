@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Past stories
+{% endblock %}
+
+{% block main %}
+
+<main>
+
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Past stories</h1>
+          <p class="lead text-muted">Press Ctrl + F on your keyboard to search for a specific keyword</p>
+        </div>
+      </div>
+    </section>
+  
+    <div class="album py-5 bg-light">
+      <div class="container">
+        
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+          {% for storyInfo in storiesInfo %}
+          <div class="col">
+            <div class="card shadow-sm">  
+              <div class="card-body">
+                <p class="card-text"> {{storyInfo[0]}}</p>
+                <p class="card-text"> {{storyInfo[1]}}</p>
+                <p class="card-text"> {{storyInfo[2]}}</p>
+                <a href="/story?storyId={{storyInfo[4]}}&wordOne={{storyInfo[0]}}&wordTwo={{storyInfo[1]}}&wordThree={{storyInfo[2]}}" class="btn btn-secondary {{storyInfo[4]}}">Read story #{{storyInfo[4]}}</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          
+        </div>
+        
+      </div>
+    </div>
+  
+  </main>
+
+  {% endblock %}
